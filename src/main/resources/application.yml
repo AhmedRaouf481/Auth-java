@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: itqan
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hc_auth
+    username: postgres
+    password: ahmed
+    # url: ${SPRING_DATASOURCE_URL}
+    # username: ${SPRING_DATASOURCE_USERNAME}
+    # password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  mvc:
+    problemdetails:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    change-log: classpath:db/master.xml
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: a.mohamed.raouf22@gmail.com
+    password: dahxtzguyuxwmvlo
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

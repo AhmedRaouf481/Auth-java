@@ -1,0 +1,11 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <include file="changelog/001_role.xml" relativeToChangelogFile="true" />
+    <include file="changelog/002_roles_seed.xml" relativeToChangelogFile="true" />
+    <include file="changelog/003_user.xml" relativeToChangelogFile="true" />
+    <include file="changelog/004_otp_info.xml" relativeToChangelogFile="true" />
+
+</databaseChangeLog>

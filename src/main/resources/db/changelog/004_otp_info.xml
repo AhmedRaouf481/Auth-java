@@ -1,0 +1,48 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="004-1" author="araouf">
+        <createTable tableName="otp_info">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="otp" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="generated_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="004-2" author="araouf">
+        <addColumn tableName="_user">
+            <column name="otp_info_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <addForeignKeyConstraint
+            baseTableName="otp_info"
+            baseColumnNames="user_email"
+            referencedTableName="_user"
+            referencedColumnNames="email"
+            constraintName="fk_otp_user_email"
+            onDelete="CASCADE"
+        />
+
+        <addForeignKeyConstraint
+            baseTableName="_user"
+            baseColumnNames="otp_info_id"
+            referencedTableName="otp_info"
+            referencedColumnNames="id"
+            constraintName="fk_user_otp_info"
+            onDelete="CASCADE"
+        />
+    </changeSet>
+</databaseChangeLog>
